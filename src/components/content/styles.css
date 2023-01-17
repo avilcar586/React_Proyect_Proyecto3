@@ -1,0 +1,211 @@
+
+
+.Card {
+
+    border-radius: 8px;
+    padding: 8px 8px;
+    transition: 0.5s ease;
+    overflow: hidden;
+    transform: translate(0);
+    background:#303030 !important;
+    border-radius: 20px !important;
+    height: 400px;
+    
+}
+
+.Card::before {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#1F1F1F;
+    opacity: 0.5;
+    z-index: -1;
+
+}
+
+.Card:hover {
+
+    scale: 0.99;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.Cardcontentmedia{
+        border-radius: 10px !important;
+        width: 100%;
+        height: 150px;
+}
+
+.Contenidotarjeta p {
+     color:rgb(255, 255, 255) ;
+     text-align: justify;
+}
+
+.Titlecardh5 {
+
+    font-size: medium;
+    color:rgb(255, 255, 255) ;
+}
+
+
+.CenterItem {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+
+.Product-category {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: auto;
+  background: #e993ff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(255, 255, 255) !important;
+  z-index: 1;
+  
+}
+
+.Product-price{
+  
+  text-align: center !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255) !important;
+  z-index: 1;
+  
+}
+
+/*Liquid button*/
+
+.ButonContent {
+    position: relative;
+    display: flex;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 40px;
+    margin: 0 auto;
+    border: #d4d4d4 2px solid;   
+    -webkit-transition: 0.2s;
+
+  }
+  
+  .ButonContent:hover{
+
+    -webkit-box-shadow: 0 0 10px #cf649a, 0 0 40px #cf649a, 0 0 80px #cf649a;
+    box-shadow: 0 0 10px #cf649a, 0 0 40px #cf649a, 0 0 80px #cf649a;
+    transition: 0.8s;
+    scale: 0.9;  
+   
+  }
+
+
+  
+.ButonContent span {
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+    font-size: 14px;  }
+  
+.ButonContent .liquid {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: #e993ff;
+    transform: translate(0, -25%);
+    -webkit-transition: 0.8s;
+  }
+  
+  .ButonContent .liquid::after,
+  .ButonContent .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color:#303030;
+    transform: translate(-50%, -75%);
+    transition: 0.8s;
+    -webkit-transition: 0.8s;
+
+
+  }
+  
+  .ButonContent .liquid::before {
+    transition: 0.8;
+    border-radius: 45%;
+    animation: animate 10s linear infinite;
+
+ }
+
+
+ .ButonContent .liquid::after {
+    border-radius: 40%;
+    animation: animate 10s linear infinite;
+
+
+  }
+  
+  .ButonContent:hover .liquid{
+    transform: translate(0, -5%);
+    transition: 0.8s;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -75%) rotate(360deg);
+    }
+  }
+
+.GetProducts {
+  background-color: #7c440f3e;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .GetProducts {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .GetProducts {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    margin: 0 auto;
+  }
+}
+
+
