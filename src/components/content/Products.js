@@ -35,9 +35,10 @@ const Products = (props) => {
             </h3>
             <CardContent className="Contenidotarjeta">
                 <Typography gutterBottom variant="h5" component="div" className="Titlecardh5">
-                {product.title}
+                {product.title == null ? "Sin título" : product.title.substring(0, 20) + "..."
+                }
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" className="Product-description">
                 {product.description==null ? "Sin descripción" :
                 product.description.substring(0, 100) + "..."
                 }
