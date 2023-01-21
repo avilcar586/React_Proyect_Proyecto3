@@ -1,0 +1,29 @@
+.categorySelector {
+    background-color: #303030 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: justify;
+}
+
+.categoryLink {
+    color: rgb(255, 255, 255) !important;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.5em;
+    padding-left: 1.2em;
+    
+}
+
+.categoryLink:hover {
+    background-color: #e993ff;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.5em;
+    padding-left: 1.2em;
+    border-bottom: 1px solid #f1e9f3;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+}

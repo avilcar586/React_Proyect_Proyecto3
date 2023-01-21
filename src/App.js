@@ -1,7 +1,6 @@
 import Header from "./components/header/Header";
 import GetProducts from "./components/content/GetProducts";
-import CategoryProducts from "./components/content/ProductCategories";
-
+import GetProductCategories from "./components/content/GetProductCategories";
 
 function App() {
   return (

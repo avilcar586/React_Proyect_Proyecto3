@@ -30,9 +30,11 @@ import TextField from '@mui/material/TextField';
 import GoogleButton from 'react-google-button'
 
 import GetProducts from '../content/GetProducts';
-import ProductCategories from '../content/ProductCategories';
+import GetProductCategories from '../content/GetProductCategories';
 
 import { BrowserRouter as Router, Switch, Route, Link, Routes, BrowserRouter, NavLink } from "react-router-dom";
+
+import styles from './styles.css';
 
 const drawerWidth = 240;
 
@@ -153,8 +155,8 @@ export default function PersistentDrawerRight() {
             <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
             <GoogleButton
-  onClick={() => { console.log('Google button clicked') }}
-/>
+            onClick={() => { console.log('Google button clicked') }}
+          />
 
 
           </Box>
@@ -187,8 +189,9 @@ export default function PersistentDrawerRight() {
 
             <Routes>
                   <Route path="/" element={<GetProducts></GetProducts>} />
-                  <Route path="/category/:category" element={<ProductCategories selectedCategory={selectedCategory}></ProductCategories>} />
+                  <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
             </Routes>
+
         </Main>
       <Drawer
         sx={{
@@ -210,11 +213,12 @@ export default function PersistentDrawerRight() {
         <Divider />
         <List className='categorySelector'>
 
-        <NavLink to="/" >All</NavLink>
-        <NavLink to="/category/electronics" onClick={() => handleCategorySelection('electronics')}>Electronica</NavLink>
-        <NavLink to="/category/jewelery" onClick={() => handleCategorySelection('jewelery')}>Joyeria</NavLink>
-        <NavLink to="/category/men's clothing" onClick={() => handleCategorySelection("men's clothing")}>Ropa de Hombre</NavLink>
-        <NavLink to="/category/women's clothing" onClick={() => handleCategorySelection("women's clothing")}>Ropa de Mujer</NavLink>
+      
+        <NavLink to="/" className="categoryLink">All</NavLink>
+        <NavLink to="/category/electronics" onClick={() => handleCategorySelection('electronics')} className="categoryLink">Electronica</NavLink>
+        <NavLink to="/category/jewelery" onClick={() => handleCategorySelection('jewelery')} className="categoryLink">Joyeria</NavLink>
+        <NavLink to="/category/men's clothing" onClick={() => handleCategorySelection("men's clothing")} className="categoryLink">Ropa de Hombre</NavLink>
+        <NavLink to="/category/women's clothing" onClick={() => handleCategorySelection("women's clothing")} className="categoryLink">Ropa de Mujer</NavLink>
             
         </List>
 
