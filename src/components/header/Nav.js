@@ -28,9 +28,11 @@ import Fade from '@mui/material/Fade';
 import TextField from '@mui/material/TextField';
 
 import GoogleButton from 'react-google-button'
-import FacebookLogin from 'react-facebook-login';
 
-import Products from '../content/GetProducts';
+import GetProducts from '../content/GetProducts';
+import ProductCategories from '../content/ProductCategories';
+
+import { BrowserRouter as Router, Switch, Route, Link, Routes, BrowserRouter, NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -108,6 +110,14 @@ export default function PersistentDrawerRight() {
   const openmodal = () => setOpenMod(true);
   const closemodal = () => setOpenMod(false);
 
+  const [selectedCategory, setSelectedCategory] =React.useState('');
+
+  const handleCategorySelection = (category) => {
+      setSelectedCategory(category);
+  }
+
+
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -171,12 +181,15 @@ export default function PersistentDrawerRight() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      
-      <Main open={open}>
-        <div>
-            <Products></Products>
-        </div>
-      </Main>
+      <BrowserRouter>
+
+        <Main open={open}>
+
+            <Routes>
+                  <Route path="/" element={<GetProducts></GetProducts>} />
+                  <Route path="/category/:category" element={<ProductCategories selectedCategory={selectedCategory}></ProductCategories>} />
+            </Routes>
+        </Main>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -195,18 +208,16 @@ export default function PersistentDrawerRight() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+        <List className='categorySelector'>
+
+        <NavLink to="/" >All</NavLink>
+        <NavLink to="/category/electronics" onClick={() => handleCategorySelection('electronics')}>Electronica</NavLink>
+        <NavLink to="/category/jewelery" onClick={() => handleCategorySelection('jewelery')}>Joyeria</NavLink>
+        <NavLink to="/category/men's clothing" onClick={() => handleCategorySelection("men's clothing")}>Ropa de Hombre</NavLink>
+        <NavLink to="/category/women's clothing" onClick={() => handleCategorySelection("women's clothing")}>Ropa de Mujer</NavLink>
+            
         </List>
+
         <Divider />
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -221,6 +232,9 @@ export default function PersistentDrawerRight() {
           ))}
         </List>
       </Drawer>
+      </BrowserRouter>
+
     </Box>
   );
 }
+
