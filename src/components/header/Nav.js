@@ -18,7 +18,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
 import Button from '@mui/material/Button';
 
 import Modal from '@mui/material/Modal';
@@ -31,6 +30,7 @@ import GoogleButton from 'react-google-button'
 
 import GetProducts from '../content/GetProducts';
 import GetProductCategories from '../content/GetProductCategories';
+import GetProductByName from '../content/GetProductByName';
 
 import { BrowserRouter as Router, Switch, Route, Link, Routes, BrowserRouter, NavLink } from "react-router-dom";
 
@@ -107,6 +107,9 @@ export default function PersistentDrawerRight() {
     setOpen(false);
   };
 
+  //Crea una funcion que al dar click guarde el valor del input
+
+  
 
   const [Openmod, setOpenMod] = React.useState(false);
   const openmodal = () => setOpenMod(true);
@@ -118,6 +121,11 @@ export default function PersistentDrawerRight() {
       setSelectedCategory(category);
   }
 
+  const [selectedName, setSelectedName] =React.useState('');
+
+  const handleNameSelection = (name) => {
+      setSelectedName(name);
+  }
 
   
 
@@ -187,9 +195,19 @@ export default function PersistentDrawerRight() {
 
         <Main open={open}>
 
+            <form className="searchBar">
+                <input type="text" placeholder="Search" className="searchInput" />
+                <button type="submit" className="searchButton" onClick={() => handleNameSelection('name')}>
+                  Buscar
+                </button>
+            </form>
+
+
+
             <Routes>
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
+                  <Route path="/product/:name" element={<GetProductByName  selectedName={selectedName} ></GetProductByName>} />  
             </Routes>
 
         </Main>
