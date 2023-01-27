@@ -1,19 +1,35 @@
 import Header from "./components/header/Header";
-import GetProducts from "./components/content/GetProducts";
-import GetProductCategories from "./components/content/GetProductCategories";
+
+import SignUp from "./components/login/SignUp";
+import { useEffect, useState } from 'react';
+import firebase from 'firebase/compat/app';
+import 'firebase/auth';
+
 
 function App() {
-  return (
-    
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((currentUser) => {
+        if (currentUser) {
+            setUser(currentUser);
+        } else {
+            setUser(null);
+        }
+    });
+}, []);
+  return user ? (
     <>
-    <Header />
-    
-
-    
+      <Header />
 
     </>
 
-      );
+  ) : (
+    <SignUp />
+  );
+
 }
 
 export default App;
+
+    
+

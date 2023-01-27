@@ -22,9 +22,10 @@ const ProductCategories = ({selectedCategory}) => {
         <h1>{selectedCategory}</h1>
         <div className="GetProducts">            
             {
-            console.log(selectedCategory)
-            }
+            console.log(products)
 
+            }
+            
             <Products products={products} />
         </div>
         </>

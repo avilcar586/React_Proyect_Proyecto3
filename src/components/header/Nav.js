@@ -121,11 +121,23 @@ export default function PersistentDrawerRight() {
       setSelectedCategory(category);
   }
 
-  const [selectedName, setSelectedName] =React.useState('');
+  //const [selectedName, setSelectedName] =React.useState('');
 
-  const handleNameSelection = (name) => {
-      setSelectedName(name);
-  }
+  //Guarda el valor del input en el estado
+  //const [selectedName, setSelectedName] = React.useState('');
+
+  //const handleSearch = (selectedName) => {
+  //  setSelectedName(selectedName);
+  //}
+
+  const [selectedValue, setSelectedValue] = React.useState('');
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+    return event.target.value;
+  };
+
+
 
   
 
@@ -195,19 +207,37 @@ export default function PersistentDrawerRight() {
 
         <Main open={open}>
 
-            <form className="searchBar">
-                <input type="text" placeholder="Search" className="searchInput" />
-                <button type="submit" className="searchButton" onClick={() => handleNameSelection('name')}>
-                  Buscar
-                </button>
+            
+            {/*
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch(e.target[0].value);
+              console.log(e.target[0].value);
+            }}>
+              <select name="category" id="category">
+                <option value="asc">Ascendente</option>
+                <option value="dsc">Descendente</option>
+              </select>
+
+              <button type="submit">Buscar</button>
+
+              </form>
+
+          */}
+
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleChange(e.target[0].value);
+              console.log(e.target[0].value);
+            }}>
+              <input type="text" placeholder="Buscar" />
+              <button type="submit">Buscar</button>
             </form>
-
-
-
+            
             <Routes>
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
-                  <Route path="/product/:name" element={<GetProductByName  selectedName={selectedName} ></GetProductByName>} />  
+                  <Route path="/product/:name" element={<GetProductByName  selectedValue={selectedValue} ></GetProductByName>} />  
             </Routes>
 
         </Main>
