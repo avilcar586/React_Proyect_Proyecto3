@@ -144,7 +144,7 @@ export default function PersistentDrawerRight() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} className="Appbar">
         <Toolbar>
 
           <Button 
@@ -152,8 +152,7 @@ export default function PersistentDrawerRight() {
           
           variant="outlined"
           color='secondary'
-
-          >Iniciar Sesion</Button>
+          className='LoginButton'>Iniciar Sesion</Button>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -165,19 +164,15 @@ export default function PersistentDrawerRight() {
               timeout: 500,
         }}
       >
-        <Fade in={Openmod}>
+        <Fade in={Openmod} className="LoginModal">
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Iniciar Sesion
             </Typography>
             
             <TextField id="outlined-basic" label="Outlined" variant="outlined" />
             <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
-            <GoogleButton
-            onClick={() => { console.log('Google button clicked') }}
-          />
-
+            <GoogleButton onClick={() => { console.log('Google button clicked') }}/>
 
           </Box>
         </Fade>
@@ -188,8 +183,11 @@ export default function PersistentDrawerRight() {
             justifyContent: 'center',
             marginLeft: '-8%',
             color: 'red',
-            flexGrow: 1 }} component="div">
-          Proyecto3
+            flexGrow: 1 }} component="div"   className='GlowingText' >
+            <b>
+              P<span>
+              ro</span>
+              yec<span>to</span>3</b>
           </Typography>
           <IconButton
             color="inherit"
@@ -205,36 +203,9 @@ export default function PersistentDrawerRight() {
       </AppBar>
       <BrowserRouter>
 
-        <Main open={open}>
-
-            
-            {/*
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              handleSearch(e.target[0].value);
-              console.log(e.target[0].value);
-            }}>
-              <select name="category" id="category">
-                <option value="asc">Ascendente</option>
-                <option value="dsc">Descendente</option>
-              </select>
-
-              <button type="submit">Buscar</button>
-
-              </form>
-
-          */}
-
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              handleChange(e.target[0].value);
-              console.log(e.target[0].value);
-            }}>
-              <input type="text" placeholder="Buscar" />
-              <button type="submit">Buscar</button>
-            </form>
-            
-            <Routes>
+        <Main open={open}  className="Main">
+      
+            <Routes className="Routes">
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
                   <Route path="/product/:name" element={<GetProductByName  selectedValue={selectedValue} ></GetProductByName>} />  
@@ -271,18 +242,7 @@ export default function PersistentDrawerRight() {
         </List>
 
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        
       </Drawer>
       </BrowserRouter>
 

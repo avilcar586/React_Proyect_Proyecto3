@@ -260,7 +260,7 @@
   }
 
 .GetProducts {
-  background-color: #7c440f3e;
+  background-color:#30303016;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;

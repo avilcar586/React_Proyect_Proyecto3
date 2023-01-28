@@ -27,3 +27,106 @@
     border-bottom: 1px solid #f1e9f3;
     box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
 }
+
+.Main {
+    margin-top: 5% !important;
+    margin-bottom: 0% !important;
+}
+
+
+.Appbar {
+    background-color: #303030 !important;
+    font-size: 1rem;
+    padding: 0.5em;
+   
+}
+
+@media screen and (max-width: 600px) {
+    .Main {
+        margin-top: 15% !important;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .Main {
+        margin-top: 10% !important;
+    }
+}
+
+.LoginModal {
+
+    background-color:red !important;
+}
+  
+.LoginButton {
+    color:#e993ffc7 !important;
+    border-color: #e993ffc7 !important;
+    
+}
+
+.LoginButton:hover {
+    color: #e993ff !important;
+    border-color: #e993ff !important;
+    box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
+    text-shadow: 0 0 10px #cf649a;
+
+}
+
+
+/*Glowing title*/
+.GlowingText {
+    text-align: center;
+    margin: auto;
+     user-select: none;
+  }
+  
+  .GlowingText b{
+    font:  1.6rem 'Roboto' !important;
+    font-weight: 500 !important;
+    color: #fee;
+    text-shadow:  0 0 0.1em #cf649a, 0 0 0.2em #cf649a;
+    letter-spacing: 0.02857em;
+  }
+  .GlowingText b span{
+    animation: blink linear infinite 2s;
+  }
+  .GlowingText b span:nth-of-type(2){
+    animation: blink linear infinite 3s;
+  }
+  @keyframes blink {
+    78% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    79%{
+       color: #333;
+    }
+    80% {
+      
+      text-shadow: none;
+    }
+    81% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    82% {
+      color: #333;
+      text-shadow: none;
+    }
+    83% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    92% {
+      color: #333;
+      text-shadow: none;
+    }
+    92.5% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+  }
+  
+  
+
+  
