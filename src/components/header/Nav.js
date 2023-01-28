@@ -95,7 +95,7 @@ const style = {
   p: 4,
 };
 
-export default function PersistentDrawerRight() {
+export default function PersistentDrawerRight(user) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -107,9 +107,7 @@ export default function PersistentDrawerRight() {
     setOpen(false);
   };
 
-  //Crea una funcion que al dar click guarde el valor del input
 
-  
 
   const [Openmod, setOpenMod] = React.useState(false);
   const openmodal = () => setOpenMod(true);
@@ -130,6 +128,8 @@ export default function PersistentDrawerRight() {
   //  setSelectedName(selectedName);
   //}
 
+
+
   const [selectedValue, setSelectedValue] = React.useState('');
 
   const handleChange = (event) => {
@@ -139,7 +139,23 @@ export default function PersistentDrawerRight() {
 
 
 
-  
+  //User state
+  //const [user, setUser] = React.useState();
+
+  //const { user } = props;
+
+  //Pasar el objero user a string
+
+  const userString = JSON.stringify(user);
+
+  //Seleccionar el valor2 del objeto user
+
+  const userValue = JSON.parse(userString);
+
+  //console.log(userValue.user.value2);
+
+
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -204,7 +220,11 @@ export default function PersistentDrawerRight() {
       <BrowserRouter>
 
         <Main open={open}  className="Main">
-      
+            
+            <h1>Bienvendio {user.user}</h1>
+            {console.log(user.user)}
+
+
             <Routes className="Routes">
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />

@@ -8,23 +8,40 @@ import Background from "./components/background/Background";
 
 
 import styles from './styles.css';
+import { getSuggestedQuery } from "@testing-library/react";
 
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [user, setUser] = useState(null);
   useEffect(() => {
-      
-  
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setIsLoggedIn(true);
+        
+        //Si es true, se guarda el usuario en el estado
+        setUser(user.email);
+
+         
+
+
+
       }
       else {
         setIsLoggedIn(false);
+        setUser(null);
       }
-    });
+    }
+
+    
+    
+    );
   }, []);
+
+  //Pasar user por props a Nav
+
+  
+
 
   return (
     <div className="App">
@@ -33,32 +50,21 @@ function App() {
     {
     isLoggedIn ? 
     <>
-    <Nav /> 
+
+    
+
+    <Nav user={user} />
     <Background />
     </>
-    : <Login onLogin={() => setIsLoggedIn(true)} />}
+    
+    : <Login onLogin={() => {setIsLoggedIn(true); setUser(firebase.auth().currentUser);}} />
+    
+    }
 
     </div>
 
   );
 }
-  
-
-
-/*function App(){
-
-
-  return (
-    <div className="App">
-     
-      <Nav/>
-      <Background />
-
-
-    </div>
-  );
-}*/
-
 export default App;
 
     
