@@ -84,7 +84,7 @@
     font:  1.6rem 'Roboto' !important;
     font-weight: 500 !important;
     color: #fee;
-    text-shadow:  0 0 0.1em #cf649a, 0 0 0.2em #cf649a;
+    text-shadow:  0 0 0.1em #e993ff, 0 0 0.2em #e993ff, 0 0 0.3em #e993ff;
     letter-spacing: 0.02857em;
   }
   .GlowingText b span{

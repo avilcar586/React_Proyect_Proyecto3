@@ -1,39 +1,51 @@
-import Header from "./components/header/Header";
 import Nav from "./components/header/Nav";
-import SignUp from "./components/login/SignUp";
+import Login from "./components/login/Login";
 import { useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app';
-import 'firebase/auth';
+import firebase from 'firebase/app';
+
 
 import Background from "./components/background/Background";
 
 
 import styles from './styles.css';
 
-/*function App() {
-  const [user, setUser] = useState(null);
+function App() {
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((currentUser) => {
-        if (currentUser) {
-            setUser(currentUser);
-        } else {
-            setUser(null);
-        }
+      
+  
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        setIsLoggedIn(true);
+      }
+      else {
+        setIsLoggedIn(false);
+      }
     });
-}, []);
-  return user ? (
+  }, []);
+
+  return (
+    <div className="App">
+    
+
+    {
+    isLoggedIn ? 
     <>
-      <Header />
-
+    <Nav /> 
+    <Background />
     </>
+    : <Login onLogin={() => setIsLoggedIn(true)} />}
 
-  ) : (
-    <SignUp />
+    </div>
+
   );
+}
+  
 
-}*/
 
-function App(){
+/*function App(){
 
 
   return (
@@ -45,7 +57,7 @@ function App(){
 
     </div>
   );
-}
+}*/
 
 export default App;
 
