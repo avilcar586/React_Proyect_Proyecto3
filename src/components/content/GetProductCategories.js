@@ -19,7 +19,6 @@ const ProductCategories = ({selectedCategory}) => {
 
     return (
         <>
-        <h1>{selectedCategory}</h1>
         <div className="GetProducts">            
             {
             console.log(products)
