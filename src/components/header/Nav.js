@@ -34,7 +34,10 @@ import GetProductByName from '../content/GetProductByName';
 
 import { BrowserRouter as Router, Switch, Route, Link, Routes, BrowserRouter, NavLink } from "react-router-dom";
 
-import styles from './styles.css';
+import './styles.css';
+
+import LogoutButton from '../login/Logout';
+import Login from '../login/Login';
 
 const drawerWidth = 240;
 
@@ -162,7 +165,7 @@ export default function PersistentDrawerRight(user) {
       <CssBaseline />
       <AppBar position="fixed" open={open} className="Appbar">
         <Toolbar>
-
+          
           <Button 
           onClick={openmodal}
           
@@ -179,7 +182,7 @@ export default function PersistentDrawerRight(user) {
             BackdropProps={{
               timeout: 500,
         }}
-      >
+         >
         <Fade in={Openmod} className="LoginModal">
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
@@ -223,14 +226,13 @@ export default function PersistentDrawerRight(user) {
             
             <h1>Bienvendio {user.user}</h1>
             {console.log(user.user)}
-
-
             <Routes className="Routes">
+
+                
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
                   <Route path="/product/:name" element={<GetProductByName  selectedValue={selectedValue} ></GetProductByName>} />  
             </Routes>
-
         </Main>
       <Drawer
         sx={{
@@ -258,11 +260,14 @@ export default function PersistentDrawerRight(user) {
         <NavLink to="/category/jewelery" onClick={() => handleCategorySelection('jewelery')} className="categoryLink">Joyeria</NavLink>
         <NavLink to="/category/men's clothing" onClick={() => handleCategorySelection("men's clothing")} className="categoryLink">Ropa de Hombre</NavLink>
         <NavLink to="/category/women's clothing" onClick={() => handleCategorySelection("women's clothing")} className="categoryLink">Ropa de Mujer</NavLink>
-            
+        
+
         </List>
 
         <Divider />
-        
+
+        <LogoutButton></LogoutButton>
+
       </Drawer>
       </BrowserRouter>
 
