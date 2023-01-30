@@ -24,13 +24,14 @@
     font-weight: 400;
     padding: 0.5em;
     padding-left: 1.2em;
-    border-bottom: 1px solid #f1e9f3;
+    border-bottom: 1px solid #eee;
     box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
 }
 
 .Main {
     margin-top: 5% !important;
     margin-bottom: 0% !important;
+    background-color: #eee !important;
 }
 
 
@@ -53,18 +54,15 @@
     }
 }
 
-.LoginModal {
 
-    background-color:red !important;
-}
   
-.LoginButton {
+.LogoutButton {
     color:#e993ffc7 !important;
     border-color: #e993ffc7 !important;
     
 }
 
-.LoginButton:hover {
+.LogoutButton:hover {
     color: #e993ff !important;
     border-color: #e993ff !important;
     box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
@@ -81,7 +79,7 @@
   }
   
   .GlowingText b{
-    font:  1.6rem 'Roboto' !important;
+    font:  2.5rem 'Roboto' !important;
     font-weight: 500 !important;
     color: #fee;
     text-shadow:  0 0 0.1em #e993ff, 0 0 0.2em #e993ff, 0 0 0.3em #e993ff;
@@ -127,6 +125,9 @@
     }
   }
   
-  
+  .DrawerHeader {
+    box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a !important;
+    background-color: #eee !important;
+  }
 
-  
+ 

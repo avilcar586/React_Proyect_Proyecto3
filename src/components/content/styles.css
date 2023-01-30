@@ -286,3 +286,13 @@
 }
 
 
+.GetLoading {
+  background-color:#30303016;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  border-radius: 16px;
+
+}

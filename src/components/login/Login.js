@@ -8,37 +8,34 @@ import Typography from '@mui/material/Typography';
 
 
 import  './styles.css';
+import GoogleButton from 'react-google-button'
+
 
 
 class Login extends Component {
     state = {
         email: '',
         password: '',
-        error: null
+        error: null,
+        loading: false
     }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    //Crea un metodo que cambie la url a la página principal si el usuario está logueado
-    // handleLogin = (e) => {
-    //     e.preventDefault();
-    //     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    //         .then(() => {
-    //             this.props.history.push('/');
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error: error.message });
-    //         });
-    // }
-
     //Inicio de sesión
     handleLogin = (e) => {
         e.preventDefault();
         //Comprueba si el usuario existe, si no existe, muestra un error
+        this.setState({loading: true});
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
            
+            .then(user => {
+                this.props.onLogin();
+                this.setState({ error: null });
+                this.setState({loading: false});
+            })
             .catch(error => {
                     this.setState({ error: error.message });
 
@@ -63,8 +60,7 @@ class Login extends Component {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.props.onLogin();
-                //Cambiar la url a la página principal
-                //this.props.history.push('/');
+                
 
                 
 
@@ -73,13 +69,23 @@ class Login extends Component {
         });
     }
 
+    //Inicio de sesión con Google
+    handleGoogleLogin = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+            .then(result => {
+                const user = result.user;
+                this.setState({
+                    user
+                });
+            });
+    }
+
+
     render() {
         return (
-
-            <div className="container">
-
             
-           
+            <div className="container">
                 <div className='col-izq shadow-pop-bl'>
                 <div className="piza1 shadow-pop-bl">
                     <div className="piza2 shadow-pop-bl">
@@ -116,8 +122,9 @@ class Login extends Component {
                         {this.state.error && <p>{this.state.error}</p>}
                         <input type="email" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.email} />
                         <input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={this.state.password} />
-                        <button onClick={this.handleLogin}>Iniciar sesión</button>
-                        <button onClick={this.handleSignUp}>Registrarse</button>
+                        <GoogleButton className="LoginGoogle"onClick={this.handleGoogleLogin}/>
+                        <button onClick={this.handleLogin} className="LoginBtt"  >Iniciar sesión</button>
+                        <button onClick={this.handleSignUp} className="RegisterBtt">Registrarse</button>
                     </form>
                 </div>
             </div>

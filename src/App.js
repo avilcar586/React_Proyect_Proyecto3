@@ -11,11 +11,13 @@ import Background from "./components/background/Background";
 import styles from './styles.css';
 import { getSuggestedQuery } from "@testing-library/react";
 import { useHistory } from "react-router-dom";
+import { ThreeCircles } from 'react-loader-spinner'
 
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -26,7 +28,7 @@ function App() {
         setUser(user.email);
         //Cuando se inicia sesión, se redirige a la página principal
         //navigate('/', { replace: true });
-
+        setLoading(false);
         
 
 
@@ -35,6 +37,7 @@ function App() {
         setIsLoggedIn(false);
         setUser(null);
         //navigate('/login', { replace: true });
+        setLoading(false);
       }
     }
 
@@ -49,9 +52,9 @@ function App() {
   
 
 
-  return (
+  /*return (
     <div className="App">
-    
+      
         {isLoggedIn ? (
         <>
         <Nav user={user} />
@@ -70,6 +73,41 @@ function App() {
 
     </div>
 
+  );*/
+  return (
+    <div className="App">
+      {loading ? (
+        <div className="GetLoading">
+
+        <ThreeCircles className="Loading"
+        height="100"
+        width="100"
+        color="#cf649a"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor="#333"
+        innerCircleColor="#e993ff"
+        middleCircleColor="#333"
+        />
+        </div>
+      ) : (
+        <>
+          {isLoggedIn ? (
+            <>
+              <Nav user={user} />
+              <Background />
+            </>
+          ) : (
+            <Login onLogin={() => {
+              setIsLoggedIn(true);
+              setUser(firebase.auth().currentUser);
+            }} />
+          )}
+        </>
+      )}
+    </div>
   );
 }
 export default App;

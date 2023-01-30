@@ -166,42 +166,9 @@ export default function PersistentDrawerRight(user) {
       <AppBar position="fixed" open={open} className="Appbar">
         <Toolbar>
           
-          <Button 
-          onClick={openmodal}
-          
-          variant="outlined"
-          color='secondary'
-          className='LoginButton'>Iniciar Sesion</Button>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={Openmod}
-            onClose={closemodal}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-        }}
-         >
-        <Fade in={Openmod} className="LoginModal">
-          <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-            </Typography>
-            
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-            <GoogleButton onClick={() => { console.log('Google button clicked') }}/>
-
-          </Box>
-        </Fade>
-      </Modal>
-
           <Typography variant="h6" noWrap sx={{ 
             display: 'flex',
-            justifyContent: 'center',
-            marginLeft: '-8%',
-            color: 'red',
+            justifyContent: 'left',
             flexGrow: 1 }} component="div"   className='GlowingText' >
             <b>
               P<span>
@@ -224,7 +191,6 @@ export default function PersistentDrawerRight(user) {
 
         <Main open={open}  className="Main">
             
-            <h1>Bienvendio {user.user}</h1>
             {console.log(user.user)}
             <Routes className="Routes">
 
@@ -234,7 +200,7 @@ export default function PersistentDrawerRight(user) {
                   <Route path="/product/:name" element={<GetProductByName  selectedValue={selectedValue} ></GetProductByName>} />  
             </Routes>
         </Main>
-      <Drawer
+      <Drawer className='Drawer'
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -244,9 +210,11 @@ export default function PersistentDrawerRight(user) {
         }}
         variant="persistent"
         anchor="right"
+        color='secondary !important'
+
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader className='DrawerHeader'>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -266,7 +234,7 @@ export default function PersistentDrawerRight(user) {
 
         <Divider />
 
-        <LogoutButton></LogoutButton>
+        <LogoutButton ></LogoutButton>
 
       </Drawer>
       </BrowserRouter>
