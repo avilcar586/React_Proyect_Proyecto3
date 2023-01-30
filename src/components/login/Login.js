@@ -13,7 +13,6 @@ import GoogleButton from 'react-google-button';
 
 
 const Login = () => {
-    const [showModal, setShowModal] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -51,9 +50,25 @@ const Login = () => {
           .auth()
           .createUserWithEmailAndPassword(email, password)
           .catch((error) => {
-            setError('Error al registrar el usuario');
+            //Si los campos están vacíos
+            if (error.code === 'auth/invalid-email') { 
+            setError('Por favor rellene los campos de abajo correctamente');
+            //Si el email ya está registrado
+            } else if (error.code === 'auth/email-already-in-use') {
+                setError('El email introducido ya está registrado');
+            }
+            else if (error.code === 'auth/weak-password') {
+                setError('La contraseña debe tener al menos 6 caracteres');
+            }
+            //Si ha habido algún otro error
+            else {
+                setError('Error al registrar el usuario');
+            }
+
           });
       };
+
+      
 
     
    
@@ -68,9 +83,7 @@ const Login = () => {
                     user
                 });
             });
-    }
-
-    
+    }    
     
     return (
             
@@ -105,16 +118,15 @@ const Login = () => {
                     yec<span>to</span>3</b>
                 </Typography>
                     <form className="login">
-                        {setError && <p className='Error'>{setError}</p>}
+                        {error && <p className='Error'>{error}</p>}
                         <input type="email" name="email" placeholder="Email" onChange={handleChange}  />
                         <input type="password" name="password" placeholder="Password" onChange={handleChange}  />
                         <GoogleButton className="LoginGoogle"onClick={handleGoogleLogin}/>
                         <button onClick={handleLogin} className="LoginBtt"  >Iniciar sesión</button>
                         <button onClick={handleSignUp} className="RegisterBtt">Registrarse</button>
                     </form>
-                </div>
-               
-    
+
+                </div>    
             </div>
         );
         
