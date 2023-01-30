@@ -32,7 +32,7 @@
 .Main {
     margin-top: 5% !important;
     margin-bottom: 0% !important;
-    background-color: #eee !important;
+    background-color: rgba(238, 238, 238, 0) !important;
 }
 
 
@@ -158,12 +158,13 @@
   }
 
   .Userdata {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
+    align-items: center !important;
     height: 100%;
-
+    background-color: #eee!important;
+    padding: 1em !important;
     
   }
   .Userdata img {
