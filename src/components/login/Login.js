@@ -38,7 +38,20 @@ const Login = () => {
             setError(null);
           })
           .catch((error) => {
-            setError('Usuario o contraseña incorrectos');
+            //Si los campos están vacíos
+            if (error.code === 'auth/invalid-email') {
+                setError('Por favor rellene los campos de abajo correctamente');
+            //Si el email no está registrado
+            } else if (error.code === 'auth/user-not-found' || error.code === 'auth/user-disabled' || error.code === 'auth/invalid-email' || error.code === 'auth/wrong-password') {
+              
+                setError('Usuario o contraseña incorrectos');
+
+            }
+            //Si ha habido algún otro error
+            else {
+                setError('Error al iniciar sesión');
+            }
+
           });
       };
 
