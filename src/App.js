@@ -25,7 +25,7 @@ function App() {
         setIsLoggedIn(true);
         
         //Si es true, se guarda el usuario en el estado
-        setUser(user.email);
+        setUser(user);
         //Cuando se inicia sesión, se redirige a la página principal
         //navigate('/', { replace: true });
         setLoading(false);

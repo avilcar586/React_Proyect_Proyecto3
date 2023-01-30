@@ -30,7 +30,6 @@ import GoogleButton from 'react-google-button'
 
 import GetProducts from '../content/GetProducts';
 import GetProductCategories from '../content/GetProductCategories';
-import GetProductByName from '../content/GetProductByName';
 
 import { BrowserRouter as Router, Switch, Route, Link, Routes, BrowserRouter, NavLink } from "react-router-dom";
 
@@ -191,14 +190,12 @@ export default function PersistentDrawerRight(user) {
 
         <Main open={open}  className="Main">
             
-            {console.log(user.user)}
+            
             <Routes className="Routes">
-
-                
                   <Route path="/" element={<GetProducts></GetProducts>} />
                   <Route path="/category/:category" element={<GetProductCategories selectedCategory={selectedCategory}></GetProductCategories>} />
-                  <Route path="/product/:name" element={<GetProductByName  selectedValue={selectedValue} ></GetProductByName>} />  
             </Routes>
+
         </Main>
       <Drawer className='Drawer'
         sx={{
@@ -208,18 +205,28 @@ export default function PersistentDrawerRight(user) {
             width: drawerWidth,
           },
         }}
+        
         variant="persistent"
         anchor="right"
-        color='secondary !important'
-
+      
         open={open}
       >
         <DrawerHeader className='DrawerHeader'>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
+
         </DrawerHeader>
         <Divider />
+
+        <List className='Userdata'>
+
+        <img src={user.user.photoURL} alt="user" /> 
+        <p>Bienvenido {user.user.displayName}</p>
+        <p>{user.user.email}</p>
+        {/*console.log(user.user.photoURL)*/}
+        </List>
+
         <List className='categorySelector'>
 
       
@@ -234,7 +241,11 @@ export default function PersistentDrawerRight(user) {
 
         <Divider />
 
-        <LogoutButton ></LogoutButton>
+        <List className='LogoutList'>
+
+         <LogoutButton ></LogoutButton>
+
+        </List>
 
       </Drawer>
       </BrowserRouter>

@@ -188,7 +188,7 @@
     position: relative;
     background-color: #f45b6816;
     width: 30em;
-    height: 20em;
+    height: 22em;
     margin-top: 3em;
     -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
     -moz-transition: -moz-transform 300ms, box-shadow 300ms;
@@ -244,7 +244,7 @@
   .LoginBtt {
     font-family: "Roboto", sans-serif;
     cursor: pointer;
-    color:#e993ffc7;
+    color:#cf649ad5;
     font-size: 16px;
     text-transform: uppercase;
     width: 100%;
@@ -272,7 +272,7 @@
 .RegisterBtt {
     font-family: "Roboto", sans-serif;
     cursor: pointer;
-    color:#e993ffc7;
+    color:#cf649ad5;
     font-size: 16px;
     text-transform: uppercase;
     width: 100%;
@@ -350,4 +350,17 @@
     color: inherit;
     text-shadow: inherit;
   }
+}
+
+
+.Error {
+
+  color: #e993ff !important;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  user-select: none;
+  text-shadow: 0 0 0.1em #e993ff, 0 0 0.2em #e993ff;
 }

@@ -39,7 +39,7 @@ const GetProducts = () => {
                 visible={true}
                 ariaLabel="three-circles-rotating"
                 outerCircleColor="#333"
-                innerCircleColor="#e993ff"
+                innerCircleColor="#cf649a"
                 middleCircleColor="#333"
                 />
             </div>

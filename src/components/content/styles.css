@@ -76,7 +76,7 @@
   top: 0;
   right: 0;
   margin-top: auto;
-  background: #e993ff;
+  background: #cf649a;
   padding: 0.5rem 1rem;
   border-radius: 0 0 0 10px;
   font-size: 0.8rem;
@@ -180,7 +180,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #e993ff;
+    background-color: #cf649a;
 
   }
   
@@ -209,7 +209,7 @@
     left: 0;
     width: 300px;
     height: 300px;
-    background: #e993ff;
+    background: #cf649a;
     transform: translate(0, -25%);
     -webkit-transition: 0.8s;
   }

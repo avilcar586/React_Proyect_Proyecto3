@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: justify;
+    box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
 }
 
 .categoryLink {
@@ -17,7 +18,7 @@
 }
 
 .categoryLink:hover {
-    background-color: #e993ff;
+    background-color: #cf649a !important;
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 1rem;
@@ -56,20 +57,45 @@
 
 
   
+
+
+.LogoutList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #303030 ;
+}
+
 .LogoutButton {
-    color:#e993ffc7 !important;
-    border-color: #e993ffc7 !important;
-    
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  color:#cf649ad5 !important;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 80%;
+  border: 0;
+  padding: 10px 0;
+  margin:auto;
+  border-radius: 5px;
+  background-color: #e993ff26;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  transition: background-color 300ms;
+  border:1px #e993ffc7 !important;
+
 }
 
 .LogoutButton:hover {
-    color: #e993ff !important;
-    border-color: #e993ff !important;
-    box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
-    text-shadow: 0 0 10px #cf649a;
+  color: #e993ff !important;
+  border-color: #e993ff !important;
+  box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
+  text-shadow: 0 0 10px #cf649a;
 
 }
-
 
 /*Glowing title*/
 .GlowingText {
@@ -126,8 +152,60 @@
   }
   
   .DrawerHeader {
-    box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a !important;
     background-color: #eee !important;
+    animation: animateblinking 2s infinite;
+
   }
 
+  .Userdata {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    
+  }
+  .Userdata img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 1em;
+
+  }
+
+  .Userdata p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  @keyframes animateblinking {
+    0% {
+      box-shadow: 0 0 10px #cf649a
+    }
+
+
+    25% {
+      box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
+    }
+
+    50% {
+      box-shadow: 0 0 10px #cf649a;
+    }
+
+    75% {
+      box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
+    }
+
+    100% {
+      box-shadow: 0 0 10px #cf649a, 0 0 20px #cf649a;
+    }
+  }
  
+
+  @media screen and (max-width: 600px) {
+    
+  }
+    
+  

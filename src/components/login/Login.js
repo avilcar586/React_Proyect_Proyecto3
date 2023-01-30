@@ -37,7 +37,9 @@ class Login extends Component {
                 this.setState({loading: false});
             })
             .catch(error => {
-                    this.setState({ error: error.message });
+                    this.setState({ error: "Usuario o contraseña incorrectos" });
+                    //Mostrar  el mensaje usuario o contraseña incorrectos
+                
 
             });
         
@@ -51,7 +53,7 @@ class Login extends Component {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .catch(error => {
-                this.setState({ error: error.message });
+                this.setState({ error: "Error al registrar el usuario" });
             });
     }
 
@@ -107,9 +109,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-                    
-
-                </div>
+            </div>
 
                 <div className='col-der'>
                 <Typography className='GlowingText' >
@@ -119,7 +119,7 @@ class Login extends Component {
                     yec<span>to</span>3</b>
                 </Typography>
                     <form className="login">
-                        {this.state.error && <p>{this.state.error}</p>}
+                        {this.state.error && <p className='Error'>{this.state.error}</p>}
                         <input type="email" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.email} />
                         <input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={this.state.password} />
                         <GoogleButton className="LoginGoogle"onClick={this.handleGoogleLogin}/>
@@ -133,6 +133,8 @@ class Login extends Component {
     }
 
 }
+
+
 
 
 
